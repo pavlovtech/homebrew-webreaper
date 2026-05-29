@@ -1,40 +1,40 @@
 class Webreaper < Formula
-  desc "Declarative .NET web scraper / crawler — AI-native CLI"
+  desc "Declarative .NET web scraper / crawler: AI-native CLI"
   homepage "https://github.com/pavlovtech/WebReaper"
-  version "10.0.0"
+  version "10.1.0"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/pavlovtech/WebReaper/releases/download/v10.0.0/webreaper-v10.0.0-osx-arm64.zip"
-      sha256 "c34c5b22ed2197a649633b02c9d62628ae4ed5cc53cef0d2321f69c2cbdb9c8f"
+      url "https://github.com/pavlovtech/WebReaper/releases/download/v10.1.0/webreaper-v10.1.0-osx-arm64.zip"
+      sha256 "d36425b17baf752a221f360783dbdc88c36c393ac7de90bf3e591398306d7215"
     end
     on_intel do
-      url "https://github.com/pavlovtech/WebReaper/releases/download/v10.0.0/webreaper-v10.0.0-osx-x64.zip"
-      sha256 "b78bb5d489719b6cf696ef28a1965130b71b4ca41c4a5e6b510f6c56e0bfef23"
+      url "https://github.com/pavlovtech/WebReaper/releases/download/v10.1.0/webreaper-v10.1.0-osx-x64.zip"
+      sha256 "c733f2548f96a4f0c02bf45f06d12656fafa6908ba1c821c5344201c5bb8a458"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/pavlovtech/WebReaper/releases/download/v10.0.0/webreaper-v10.0.0-linux-x64.tar.gz"
-      sha256 "fc13b078abbc5db41483ccce5bafc67d0ce9c5bcf5ff4f9d99f9d1106c81b73e"
+      url "https://github.com/pavlovtech/WebReaper/releases/download/v10.1.0/webreaper-v10.1.0-linux-x64.tar.gz"
+      sha256 "d0b66e590670269962b674b377b5674eb48a0b29f8297f508f4dbe2d06df7374"
     end
     on_arm do
-      url "https://github.com/pavlovtech/WebReaper/releases/download/v10.0.0/webreaper-v10.0.0-linux-arm64.tar.gz"
-      sha256 "4b20e649395ac6a9a90e208512ee0bff76ff6f6f726404c11077ee0ca536d9d1"
+      url "https://github.com/pavlovtech/WebReaper/releases/download/v10.1.0/webreaper-v10.1.0-linux-arm64.tar.gz"
+      sha256 "8e7bb830d5ff941f673d9f9b51cab67fb78abc3f8bdee0e8c8c87bd604dfe6fa"
     end
   end
 
   def install
     bin.install "webreaper"
-    # The archive ships LICENSE.txt + README.md alongside the binary —
+    # The archive ships LICENSE.txt + README.md alongside the binary;
     # `bin.install "webreaper"` ignores them, which is the desired shape.
     # Homebrew's auto-generated caveats include `webreaper help`.
   end
 
   test do
-    # Smoke test — the binary must run and print a version string.
+    # Smoke test: the binary must run and print a version string.
     # ADR-0024: version is tag-derived; matches the formula's `version`.
     assert_match version.to_s, shell_output("#{bin}/webreaper version")
   end
